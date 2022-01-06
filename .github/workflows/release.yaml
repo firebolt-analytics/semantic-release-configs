@@ -1,0 +1,32 @@
+name: ci / release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config:
+          - dsp
+          - simple
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update version in package.json
+        run: |
+          cd ./${{ matrix.config }}
+          npm version ${{ github.event.release.tag_name }}
+
+      - name: Publish package
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package: ./${{ matrix.config }}/package.json
