@@ -18,8 +18,5 @@
   "main": "index.js",
   "files": [
     "index.js"
-  ],
-  "dependencies": {
-    "conventional-changelog-conventionalcommits": "^4.6.3"
-  }
+  ]
 }
