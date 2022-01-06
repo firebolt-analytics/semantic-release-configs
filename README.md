@@ -17,7 +17,7 @@ existing configurations from this centralized location to avoid repeating it in 
 
 The use of `semantic-release` requires commits that land into your `main` branch to follow the convention. It is highly
 advised to configure your repository to only allow "squash" type of PR merges and add a CI workflow similar to
-[workflow_example_pr.yaml](./workflow_example_pr.yaml) that will ensure that only PRs with the valid title can be
+[.github/workflows/pr.yaml](.github/workflows/pr.yaml) that will ensure that only PRs with the valid title can be
 merged. GitHub will convert PR title to the commit title during squash.
 
 ## Available configurations
@@ -41,21 +41,19 @@ Every commit to the `main` or `master` branch will generate a new "stable" SemVe
 
 This configuration stands for "dev-staging-production" and fits great for applications.
 
-- Commits to the `main` or `master` branches will generate a new "beta" SemVer (e.g. `v1.2.3-beta.12`). 
-- Commits to the `staging` branch will generate a new "rc" SemVer (e.g. `v1.2.3-rc.3`). 
+- Commits to the `main` or `master` branches will generate a new "beta" SemVer (e.g. `v1.2.3-beta.12`).
+- Commits to the `staging` branch will generate a new "rc" SemVer (e.g. `v1.2.3-rc.3`).
 - Commits to the `release` branch will generate a new "stable" SemVer (e.g. `v1.2.3`).
 
 ## Usage
 
-Add `.releaserc` file to the root of your repository with the following contents:
+Add `.releaserc.yaml` file to the root of your repository with the following contents:
 
-```json
-{
-  "extends": "@firebolt-analytics/semantic-release-config-<VARIANT>"
-}
+```yaml
+extends: @firebolt-analytics/semantic-release-config-<VARIANT>
 ```
 
-Don't forget to replace `<VARIANT>` with the name of the desired configuration from the prevision section.
+Don't forget to replace `<VARIANT>` with the name of the desired configuration from the previous section.
 
 ### Usage in CI
 

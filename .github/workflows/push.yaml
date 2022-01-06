@@ -1,0 +1,21 @@
+name: ci / push
+
+on:
+  push:
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config:
+          - simple
+          - dsp
+    steps:
+      - uses: actions/checkout@v2
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package: ./${{ matrix.config }}/package.json

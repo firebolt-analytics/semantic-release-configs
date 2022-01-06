@@ -1,0 +1,1 @@
+extends: @firebolt-analytics/semantic-release-config-simple
