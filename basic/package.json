@@ -1,0 +1,25 @@
+{
+  "name": "@firebolt-analytics/semantic-release-config-basic",
+  "description": "Shareable config for semantic-release",
+  "version": "0.0.0-development",
+  "author": "Ivan Koptiev (https://github.com/kop)",
+  "homepage": "https://github.com/firebolt-analytics/semantic-release-configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firebolt-analytics/semantic-release-configs.git"
+  },
+  "keywords": [
+    "release",
+    "version",
+    "semantic-release",
+    "semantic-release-config",
+    "conventional-changelog"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "conventional-changelog-conventionalcommits": "^4.6.3"
+  }
+}

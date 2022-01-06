@@ -1,0 +1,58 @@
+name: ci / pr
+
+on:
+
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+
+jobs:
+
+  # Validate PR conventions.
+  conventions:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Validate name of the branch.
+      - name: Validate branch name
+        uses: deepakputhraya/action-branch-name@v1.0.0
+        with:
+
+          # Regex the branch should match.
+          #
+          # This expression will pass branches like:
+          # - 1.x.x
+          # - 1.2.x
+          # - 1.2.3
+          # - FIR-123_some_feature
+          # - no_issue_some_update
+          # - dependabot/some_dependency
+          regex: ^((FIR\-\d+_|no_issue_|dependabot\/).+|[0-9]+\.([0-9]+|x)\.([0-9]+|x))$
+
+      # Validate PR title.
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v3.4.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+
+          # Configure which types are allowed.
+          types: |
+            feat
+            fix
+            chore
+            revert
+
+          # Whether scope must always be provided.
+          requireScope: false
+
+          # When using "Squash and merge" on a PR with only one commit, GitHub
+          # will suggest using that commit message instead of the PR title for the
+          # merge commit, and it's easy to commit this by mistake.
+          # Enable this option to also validate the commit message for one commit PRs.
+          validateSingleCommit: true
