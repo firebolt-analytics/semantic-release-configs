@@ -31,11 +31,11 @@ let releaseRules = [
     },
     {
         type: "fix",
-        release: "minor"
+        release: "patch"
     },
     {
         type: "chore",
-        release: "minor"
+        release: "patch"
     },
 ];
 
