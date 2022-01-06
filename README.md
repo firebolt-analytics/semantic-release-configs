@@ -47,15 +47,4 @@ This configuration stands for "dev-staging-production" and fits great for applic
 
 ## Usage
 
-Add `.releaserc.yaml` file to the root of your repository with the following contents:
-
-```yaml
-extends: @firebolt-analytics/semantic-release-config-<VARIANT>
-```
-
-Don't forget to replace `<VARIANT>` with the name of the desired configuration from the previous section.
-
-### Usage in CI
-
-To use `semantic-release` in CI, it is recommended to use a workflow similar to
-[workflow_example_version.yaml](./workflow_example_version.yaml).
+It is recommended to use a workflow similar to [.github/workflows/push.yaml](.github/workflows/push.yaml).
