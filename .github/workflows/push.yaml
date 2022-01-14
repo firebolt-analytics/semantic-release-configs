@@ -9,7 +9,7 @@ jobs:
 
   # Generate new release
   semantic_release:
-    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@v1
+    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@v1.0.1
     with:
       template: simple
 

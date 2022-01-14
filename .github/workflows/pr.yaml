@@ -15,4 +15,4 @@ jobs:
 
   # Validate PR conventions
   conventions:
-    uses: firebolt-analytics/gha-workflows/.github/workflows/conventional_pr.yaml@v1
+    uses: firebolt-analytics/gha-workflows/.github/workflows/conventional_pr.yaml@v1.0.1
