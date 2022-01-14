@@ -9,14 +9,13 @@ jobs:
 
   # Generate new release
   semantic_release:
-    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@v1.0.1
+    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@v1
     with:
       template: simple
 
   # Publish to NPM
   publish:
-    needs:
-      - semantic_release
+    needs: semantic_release
     if: ${{ needs.semantic_release.outputs.new_release_published }}
     runs-on: ubuntu-latest
     strategy:
