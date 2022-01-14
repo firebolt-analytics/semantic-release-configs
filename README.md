@@ -37,9 +37,9 @@ This is the simplest possible configuration that works great for libraries.
 
 Every commit to the `main` or `master` branch will generate a new "stable" SemVer (e.g. `v1.2.3`).
 
-### dsp
+### brs
 
-This configuration stands for "dev-staging-production" and fits great for applications.
+This configuration stands for "beta-rc-stable" and fits great for applications.
 
 - Commits to the `main` or `master` branches will generate a new "beta" SemVer (e.g. `v1.2.3-beta.12`).
 - Commits to the `staging` branch will generate a new "rc" SemVer (e.g. `v1.2.3-rc.3`).

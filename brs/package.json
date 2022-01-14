@@ -1,5 +1,5 @@
 {
-  "name": "@firebolt-analytics/semantic-release-config-dsp",
+  "name": "@firebolt-analytics/semantic-release-config-brs",
   "description": "Shareable config for semantic-release",
   "version": "0.0.0-development",
   "author": "Ivan Koptiev (https://github.com/kop)",

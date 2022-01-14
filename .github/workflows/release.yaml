@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         config:
-          - dsp
+          - brs
           - simple
     steps:
 
