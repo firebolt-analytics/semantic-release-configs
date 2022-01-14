@@ -2,10 +2,42 @@ name: ci / push
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
 
+  # Generate new release
   semantic_release:
-    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@main
+    uses: firebolt-analytics/gha-workflows/.github/workflows/semantic_release.yaml@v1
     with:
       template: simple
+
+  # Publish to NPM
+  publish:
+    needs:
+      - semantic_release
+    if: ${{ needs.semantic_release.outputs.new_release_published }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config:
+          - brs
+          - simple
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update version in package.json
+        run: |
+          cd ./${{ matrix.config }}
+          npm version ${{ needs.semantic_release.outputs.new_release_version }}
+
+      - name: Publish package
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package: ./${{ matrix.config }}/package.json
+          access: public

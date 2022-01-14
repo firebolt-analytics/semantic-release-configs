@@ -13,6 +13,6 @@ on:
 
 jobs:
 
-  # Validate PR conventions.
+  # Validate PR conventions
   conventions:
-    uses: firebolt-analytics/gha-workflows/.github/workflows/conventional_pr.yaml@main
+    uses: firebolt-analytics/gha-workflows/.github/workflows/conventional_pr.yaml@v1
