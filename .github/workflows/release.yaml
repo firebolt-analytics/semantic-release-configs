@@ -24,17 +24,10 @@ jobs:
           cd ./${{ matrix.config }}
           npm version ${{ github.event.release.tag_name }}
 
-      - name: Parse SemVer
-        id: semver_parser
-        uses: booxmedialtd/ws-action-parse-semver@v1
-        with:
-          input_string: ${{ github.event.release.tag_name }}
-
       - name: Publish package
         uses: JS-DevTools/npm-publish@v1
         with:
           registry: https://npm.pkg.github.com
           token: ${{ secrets.GITHUB_TOKEN }}
           package: ./${{ matrix.config }}/package.json
-          tag: v${{ steps.semver_parser.outputs.major }}
           access: public
