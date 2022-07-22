@@ -1,9 +1,9 @@
 // Common fields
 let preset = "conventionalcommits";
-let issuePrefixes = ["FIR-"];
+let issuePrefixes = ["FIR-", "DEVEX-", "CLOP-", "CLENG-"];
 let presetConfig = {
     issuePrefixes,
-    issueUrlFormat: "https://packboard.atlassian.net/browse/FIR-{{id}}",
+    issueUrlFormat: "https://packboard.atlassian.net/browse/{{prefix}}{{id}}",
     types: [
         {"type": "feat", "section": "Features"},
         {"type": "fix", "section": "Bug fixes"},
